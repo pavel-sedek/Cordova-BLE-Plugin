@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+		id="cz.cvut.sedekpav.cordova.bleplugin"
+		version="0.1.0">
+	<name>BLE</name>
+	<description>BLE Plugin</description>
+	<license>MIT</license>
+	<keywords>phonegap,BLE</keywords>
+ 
+ 
+	<js-module src="www/ble.js" name="BLEPlugin">
+		<clobbers target="window.ble" />
+	</js-module>
+ 
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="BLEPlugin">
+				<param name="android-package" value="cz.cvut.sedekpav.cordova.bleplugin"/>
+			</feature>
+		</config-file>
+ 
+		<source-file src="src/cz/cvut/sedekpav/cordova/bleplugin/BLEPlugin.java" target-dir="src/cz/cvut/sedekpav/cordova/bleplugin" />      
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<service android:name=".BLEService" android:enabled="true"/>
+		</config-file>
+		
+		<uses-permission android:name="android.permission.BLUETOOTH"/>
+		<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+		<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+	</platform>          
+</plugin>
