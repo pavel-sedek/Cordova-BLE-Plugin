@@ -25,10 +25,10 @@
 		<source-file src="src/cz/cvut/sedekpav/cordova/bleplugin/BLEPlugin.java" target-dir="src/cz/cvut/sedekpav/cordova/bleplugin" />      
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
 			<service android:name=".BLEService" android:enabled="true"/>
+			<uses-permission android:name="android.permission.BLUETOOTH"/>
+			<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+			<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 		</config-file>
 		
-		<uses-permission android:name="android.permission.BLUETOOTH"/>
-		<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-		<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 	</platform>          
 </plugin>
